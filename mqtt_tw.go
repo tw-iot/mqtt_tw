@@ -10,7 +10,7 @@ import (
 
 var MqttTw mqtt.Client
 
-func MqttInit(port int, ip, username, password, clientId, willTopic, willMsg string) {
+func MqttInit(port int, ip, username, password, clientId, willTopic, willMsg string) mqtt.Client {
 	mqtt.ERROR = log.New(os.Stdout, "[ERROR] ", 0)
 
 	opts := mqtt.NewClientOptions()
@@ -42,6 +42,7 @@ func MqttInit(port int, ip, username, password, clientId, willTopic, willMsg str
 	if token := MqttTw.Connect(); token.Wait() && token.Error() != nil {
 		panic(token.Error())
 	}
+	return MqttTw
 }
 
 var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) {
