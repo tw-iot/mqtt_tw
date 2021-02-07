@@ -11,26 +11,26 @@ import (
 var MqttTw mqtt.Client
 
 type MqttInfo struct {
-	Ip        string
-	Port      int
-	Username  string
-	Password  string
-	ClientId  string
-	CleanSession bool
+	Ip            string
+	Port          int
+	Username      string
+	Password      string
+	ClientId      string
+	CleanSession  bool
 	AutoReconnect bool
-	WillTopic string
-	WillMsg   string
+	WillTopic     string
+	WillMsg       string
 }
 
 func NewMqttInfo(ip, username, password, clientId string, port int) MqttInfo {
 	return MqttInfo{
-		Ip: ip,
-		Port:  port,
-		Username:  username,
-		Password:  password,
-		ClientId:  clientId,
+		Ip:            ip,
+		Port:          port,
+		Username:      username,
+		Password:      password,
+		ClientId:      clientId,
 		CleanSession:  true,
-		AutoReconnect:  true,
+		AutoReconnect: true,
 	}
 }
 
