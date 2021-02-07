@@ -5,6 +5,16 @@ go get github.com/tw-iot/mqtt_tw
 
 ### 示例
 ```
+package main
+
+import (
+	"fmt"
+	"github.com/eclipse/paho.mqtt.golang"
+	uuid "github.com/satori/go.uuid"
+	"github.com/tw-iot/mqtt_tw"
+	"time"
+)
+
 func main()  {
 	clientId := uuid.NewV4()
 	fmt.Println(clientId)
