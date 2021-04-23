@@ -67,7 +67,7 @@ func MqttInit(mqttInfo *MqttInfo) mqtt.Client {
 
 	MqttTw = mqtt.NewClient(opts)
 	if token := MqttTw.Connect(); token.Wait() && token.Error() != nil {
-		panic(token.Error())
+		log.Println("mqtt connect err:", token.Error())
 	}
 	return MqttTw
 }
@@ -79,12 +79,12 @@ var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Me
 
 var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
 	//连接的回调
-	//fmt.Println("Connected")
+	log.Println("mqtt connected success")
 }
 
 var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err error) {
 	//连接丢失的回调
-	//fmt.Printf("Connect lost: %v", err)
+	log.Println("mqtt connect lost err: ", err)
 }
 
 func MqttDisconnect() {
