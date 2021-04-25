@@ -68,6 +68,7 @@ func MqttInit(mqttInfo *MqttInfo) mqtt.Client {
 	MqttTw = mqtt.NewClient(opts)
 	if token := MqttTw.Connect(); token.Wait() && token.Error() != nil {
 		log.Println("mqtt connect err:", token.Error())
+		panic(token.Error())
 	}
 	return MqttTw
 }
