@@ -85,6 +85,7 @@ func MqttInit(mqttInfo *MqttInfo, messagePubHandler mqtt.MessageHandler,
 	opts.OnConnectionLost = connectLostHandler
 
 	MqttTw = mqtt.NewClient(opts)
+	log.Println("mqtt start connect ......")
 	if token := MqttTw.Connect(); token.Wait() && token.Error() != nil {
 		log.Println("mqtt connect err:", token.Error())
 	}
