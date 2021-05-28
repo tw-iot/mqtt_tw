@@ -17,5 +17,3 @@
 .DS_Store
 *.swp
 .idea/*
-go.mod
-go.sum
