@@ -72,7 +72,7 @@ func MqttInit(mqttInfo *MqttInfo, messagePubHandler mqtt.MessageHandler,
 	opts.SetAutoReconnect(mqttInfo.AutoReconnect)
 	opts.SetConnectRetry(mqttInfo.ConnectRetry)
 
-	if mqttInfo.WillMsg != "" && mqttInfo.WillMsg != "" {
+	if mqttInfo.WillTopic != "" && mqttInfo.WillMsg != "" {
 		// 设置“遗嘱”消息的话题，若客户端与服务器之间的连接意外中断，服务器将发布客户端的“遗嘱”消息。
 		opts.SetWill(mqttInfo.WillTopic, mqttInfo.WillMsg, 0, false)
 	}
