@@ -84,14 +84,16 @@ func MqttInit(mqttInfo *MqttInfo, messagePubHandler mqtt.MessageHandler,
 	opts.OnConnect = connectHandler
 	opts.OnConnectionLost = connectLostHandler
 
-	MqttTw = mqtt.NewClient(opts)
+	MqttClient := mqtt.NewClient(opts)
 	log.Println("mqtt start connect ......")
-	if token := MqttTw.Connect(); token.Wait() && token.Error() != nil {
+	if token := MqttClient.Connect(); token.Wait() && token.Error() != nil {
 		log.Println("mqtt connect err:", token.Error())
 	}
-	return MqttTw
+	return MqttClient
 }
 
 func MqttDisconnect() {
-	MqttTw.Disconnect(250)
+	if MqttTw != nil {
+		MqttTw.Disconnect(250)
+	}
 }
